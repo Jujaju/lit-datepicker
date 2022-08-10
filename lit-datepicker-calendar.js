@@ -19,10 +19,11 @@ import subMonths from 'date-fns/esm/subMonths';
 import subYears from 'date-fns/esm/subYears';
 import enUS from 'date-fns/esm/locale/en-US';
 import fr from 'date-fns/esm/locale/fr';
+import de from 'date-fns/esm/locale/de';
 import { ironFlexLayoutAlignTheme, ironFlexLayoutTheme } from './iron-flex-import';
 import './lit-datepicker-cell';
 
-const locales = { en: enUS, fr };
+const locales = { en: enUS, fr, de };
 
 class LitDatepickerCalendar extends LitElement {
   static get styles() {
@@ -150,7 +151,6 @@ class LitDatepickerCalendar extends LitElement {
     return html`
     <div>
       <div class="monthName layout horizontal center">
-        ${this.prev || this.narrow || this.enableYearChange ? html`<paper-icon-button icon="chevron-left" @tap="${this.handlePrevMonth.bind(this)}"></paper-icon-button>` : null}
         <div class="flex layout horizontal center center-justified">
           ${this.enableMonthChange ? html`
             <paper-dropdown-menu class="month-change" no-label-float>
@@ -165,6 +165,7 @@ class LitDatepickerCalendar extends LitElement {
             </paper-listbox>
           </paper-dropdown-menu>` : html`${this.year}`}
         </div>
+        ${this.prev || this.narrow || this.enableYearChange ? html`<paper-icon-button icon="chevron-left" @tap="${this.handlePrevMonth.bind(this)}"></paper-icon-button>` : null}
         ${this.next || this.narrow || this.enableYearChange ? html`<paper-icon-button icon="chevron-right" @tap="${this.handleNextMonth.bind(this)}"></paper-icon-button>` : null}
       </div>
       <div class="go-today">
